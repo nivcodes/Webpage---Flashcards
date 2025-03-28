@@ -1,0 +1,8 @@
+// config.js
+// Enter API Keys below
+const CONFIG = {
+    AZURE_OPENAI_API_KEY: "",
+    AZURE_OPENAI_ENDPOINT: "",
+    AZURE_COMPUTER_VISION_API_KEY: "",
+    AZURE_COMPUTER_VISION_ENDPOINT: ""
+};
