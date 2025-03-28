@@ -1,3 +1,6 @@
+const script = document.createElement('script');
+script.src = chrome.runtime.getURL('config.js');
+
 // Listen for messages from the background script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "createFlashcard") {
@@ -152,8 +155,8 @@ async function fetchImageFromURL(imageURL) {
 }
 
 async function getTextEmbedding(textData) {
-  const apiKey = "";  // Replace with your Azure Computer Vision API key
-  const endpoint = ""; // Replace with your Azure Computer Vision endpoint
+  const apiKey = CONFIG.AZURE_COMPUTER_VISION_API_KEY;  // Replace with your Azure Computer Vision API key
+  const endpoint = CONFIG.AZURE_COMPUTER_VISION_ENDPOINT; // Replace with your Azure Computer Vision endpoint
   const apiVersion = "2024-02-01"; // Use the appropriate API version
   const modelVersion = "2023-04-15"; // Specify the model version
 
@@ -186,8 +189,8 @@ async function getTextEmbedding(textData) {
 }
 
 async function getImageEmbedding(imageData) {
-  const apiKey = "";  // Replace with your Azure Computer Vision API key
-  const endpoint = ""; // Replace with your Azure Computer Vision endpoint
+  const apiKey = CONFIG.AZURE_COMPUTER_VISION_API_KEY;  // Replace with your Azure Computer Vision API key
+  const endpoint = CONFIG.AZURE_COMPUTER_VISION_ENDPOINT; // Replace with your Azure Computer Vision endpoint
   const apiVersion = "2024-02-01"; // Use the appropriate API version
   const modelVersion = "2023-04-15"; // Specify the model version
 
@@ -420,8 +423,8 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
 
 
 async function generateFlashcardsAzure(text, userContext) {
-  const apiKey = "";
-  const endpoint = "";
+  const apiKey = CONFIG.AZURE_OPENAI_API_KEY;
+  const endpoint = CONFIG.AZURE_OPENAI_ENDPOINT;
 
   let prompt = `Please generate flashcards in a Q&A format from the following text. 
   Each flashcard should focus on a single concept, with the question on the front 
