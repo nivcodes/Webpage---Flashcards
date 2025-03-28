@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "WebFlash - Flashcard Creator",
+  "version": "1.0",
+  "description": "Create flashcards by highlighting text on webpages or capturing content 📚",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["readability.js", "content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["readability.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
